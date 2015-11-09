@@ -1,0 +1,15 @@
+2015-10-23   
+1 关于printer
+android.util.LogPrinter
+android.util.StringBuilderPrinter
+android.util.PrintWriterPrinter
+android.util.PrintStreamPrinter 
+
+Printer printer = new LogPrinter(Log.ERROR, “tag”);        
+myHandler.dump(printer, "DR prefix");  
+
+2 打印调用点的调用堆栈
+RuntimeException e = new RuntimeException(" %%%% is here");
+e.fillInStackTrace();
+Slog.i("AppErrorDialog", "xxxxxxxxxxxxxxxxx" , e);
+

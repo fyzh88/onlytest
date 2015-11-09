@@ -1,0 +1,107 @@
+out/target/product/sirfsocv7/system/app/Bluetooth.apk
+out/target/product/sirfsocv7/system/framework/telephony-common.jar
+out/target/product/sirfsocv7/system/framework/services.jar
+
+======================================================
+2015-11-4
+在测试蓝牙开关的时候出现下面的问题，大致是数据库操作出现了故障。
+还曾经出现过车机/data分区错误的现象。
+如果拒绝电话簿的同步，也就是不涉及电话本同步的时候，看一看不断开关蓝牙会出现什么状态。
+// CRASH: com.android.bluetooth (pid 3985)
+// Short Msg: android.database.CursorWindowAllocationException
+// Long Msg: android.database.CursorWindowAllocationException: Cursor window allocation of 2048 kb failed. 
+// Build Label: CSR/sirfsocv7/sirfsocv7:4.2.2/JDQ39E/eng.mengxianbin.20151021.230505:eng/test-keys
+// Build Changelist: eng.mengxianbin.20151021.230505
+// Build Time: 1445440088000
+// android.database.CursorWindowAllocationException: Cursor window allocation of 2048 kb failed. 
+// 	at android.database.CursorWindow.<init>(CursorWindow.java:104)
+// 	at android.database.AbstractWindowedCursor.clearOrCreateWindow(AbstractWindowedCursor.java:198)
+// 	at android.database.sqlite.SQLiteCursor.fillWindow(SQLiteCursor.java:139)
+// 	at android.database.sqlite.SQLiteCursor.getCount(SQLiteCursor.java:133)
+// 	at android.content.ContentResolver.query(ContentResolver.java:390)
+// 	at android.content.ContentResolver.query(ContentResolver.java:315)
+// 	at com.android.bluetooth.opp.BluetoothOppNotification.updateActiveNotification(BluetoothOppNotification.java:213)
+// 	at com.android.bluetooth.opp.BluetoothOppNotification.access$300(BluetoothOppNotification.java:55)
+// 	at com.android.bluetooth.opp.BluetoothOppNotification$NotificationUpdateThread.run(BluetoothOppNotification.java:202)
+
+反复开关164次出现下面的问题：
+// CRASH: com.android.bluetooth (pid 4041)
+// Short Msg: android.database.sqlite.SQLiteCantOpenDatabaseException
+// Long Msg: android.database.sqlite.SQLiteCantOpenDatabaseException: unable to open database file (code 14)
+// Build Label: CSR/sirfsocv7/sirfsocv7:4.2.2/JDQ39E/eng.mengxianbin.20151021.230505:eng/test-keys
+// Build Changelist: eng.mengxianbin.20151021.230505
+// Build Time: 1445440088000
+// android.database.sqlite.SQLiteCantOpenDatabaseException: unable to open database file (code 14)
+// 	at android.database.sqlite.SQLiteConnection.nativeExecuteForChangedRowCount(Native Method)
+// 	at android.database.sqlite.SQLiteConnection.executeForChangedRowCount(SQLiteConnection.java:727)
+// 	at android.database.sqlite.SQLiteSession.executeForChangedRowCount(SQLiteSession.java:754)
+// 	at android.database.sqlite.SQLiteStatement.executeUpdateDelete(SQLiteStatement.java:64)
+// 	at android.database.sqlite.SQLiteDatabase.delete(SQLiteDatabase.java:1494)
+// 	at com.android.bluetooth.opp.BluetoothOppProvider.delete(BluetoothOppProvider.java:457)
+// 	at android.content.ContentProvider$Transport.delete(ContentProvider.java:228)
+// 	at android.content.ContentResolver.delete(ContentResolver.java:958)
+// 	at com.android.bluetooth.opp.BluetoothOppService.trimDatabase(BluetoothOppService.java:1039)
+// 	at com.android.bluetooth.opp.BluetoothOppService.access$100(BluetoothOppService.java:70)
+// 	at com.android.bluetooth.opp.BluetoothOppService$1.run(BluetoothOppService.java:169)
+
+当具有蓝牙电话本同步功能之后，多次开关出现的问题如下：
+// CRASH: com.android.bluetooth (pid 4018)
+// Short Msg: android.database.sqlite.SQLiteException
+// Long Msg: android.database.sqlite.SQLiteException: cannot rollback - no transaction is active (code 1)
+// Build Label: CSR/sirfsocv7/sirfsocv7:4.2.2/JDQ39E/eng.mengxianbin.20151021.230505:eng/test-keys
+// Build Changelist: eng.mengxianbin.20151021.230505
+// Build Time: 1445440088000
+// android.database.sqlite.SQLiteException: cannot rollback - no transaction is active (code 1)
+// 	at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:181)
+// 	at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:137)
+// 	at android.content.ContentProviderProxy.insert(ContentProviderNative.java:420)
+// 	at android.content.ContentResolver.insert(ContentResolver.java:866)
+// 	at android.provider.CallLog$Calls.addCall(CallLog.java:362)
+// 	at com.android.bluetooth.pac.BluetoothPbapClientVcardHandler.onEntryCreated(BluetoothPbapClientVcardHandler.java:83)
+// 	at com.android.vcard.VCardEntryConstructor.onEntryEnded(VCardEntryConstructor.java:114)
+// 	at com.android.vcard.VCardParserImpl_V21.parseOneVCard(VCardParserImpl_V21.java:228)
+// 	at com.android.vcard.VCardParserImpl_V21.parse(VCardParserImpl_V21.java:1024)
+// 	at com.android.vcard.VCardParser_V30.parse(VCardParser_V30.java:87)
+// 	at com.android.vcard.VCardParser.parse(VCardParser.java:84)
+// 	at com.android.bluetooth.pac.BluetoothPbapClientService.readOneVCard(BluetoothPbapClientService.java:326)
+// 	at com.android.bluetooth.pac.BluetoothPbapClientService.doActuallyReadOneVCard(BluetoothPbapClientService.java:288)
+// 	at com.android.bluetooth.pac.BluetoothPbapClientService.readVcardString(BluetoothPbapClientService.java:385)
+// 	at com.android.bluetooth.pac.BluetoothPbapClientService.CheckAndSaveCompleteVcard(BluetoothPbapClientService.java:741)
+// 	at com.android.bluetooth.pac.BluetoothPbapClientService.access$100(BluetoothPbapClientService.java:54)
+// 	at com.android.bluetooth.pac.BluetoothPbapClientService$StoreVcardStringThread.run(BluetoothPbapClientService.java:761)
+
+
+寻找“a6-hid”字符串
+packages/apps/systemSet/src/com/chinatsp/assist/WarningReceiver.java:43:    private final String FAILED_BLUETOOTH_NAME = "a6-hid";
+packages/apps/systemSet/src/com/chinatsp/assist/WarningReceiver.java:59:	Log.d(TAG, "get bluetoothname == a6-hid");
+
+读取蓝牙设备名称的文件，这个文件是自动创建的而不是发布的
+/config/cs15.txt
+
+
+
+//
+    private void waitPBAPDisconnected( String BTAddress){
+        BTAddress ="4C:3C:16:42:15:F7";
+        int pbapStat = global.bt_pbapGetConnectStatus(BTAddress);
+        Log.d(TAG,"waitPBAPDisconnected() PBAPstatues = "+ pbapStat+"       address =" + BTAddress);
+        int counter = 0;
+        boolean exeDiscon = false;
+        while(pbapStat!=BluetoothPhonebookClient.BLUETOOTH_PHONEBOOK_DISCONNECTED){
+            CommonUtils.sleep(3000);
+	    pbapStat = global.bt_pbapGetConnectStatus(BTAddress);
+            if(counter > 20){
+                if(!exeDiscon){
+                    global.bt_disConnect(BTAddress);
+                    exeDiscon = true;
+                    counter = 0;
+                }else{break;}
+            }
+            counter++;
+            Log.d(TAG,"waitPBAPDisconnected() counter ="+counter+"     exeDiscon= "+exeDiscon);
+        }
+        Log.d(TAG,"waitPBAPDisconnected() is OVER!");
+    }
+
+
+

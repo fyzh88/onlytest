@@ -1,0 +1,168 @@
+2015-9-14
+1,电话本同步流程尚未走完
+2X,需要改进的项目是蓝牙连接的过程判断，由于isEnable()函数可能会阻断UI线程，所以最好放在thread中进行处理。
+3-,下载进度的提示需要在jni层中进行处理，然后反馈给java层，代码位置packages/apps/bluetooth/jni/com.csr_csrservices_pac.cpp,此方案被否定
+    新的方案是修改packages/apps/Bluetooth/src/pac/BluetoothPbapClientServer.java 中的PbapcMessageReceivedNotify（）函数
+
+4,setDeviceName函数的处理流程，需要我们在ui线程中进行处理吗？修改名称不能实现的问题是不是和这个有关系？
+5,打开android原生 设置 am start -n com.android.settings/com.android.settings.Settings
+6, 连接提示的时候出现 两个蓝牙 状态同时变化的问题（手机主动连接车机的时候出现）
+7x,蓝牙状态在最初的时候，需要进行初值设定（已经在PhoneApp中使用thread创建好）,这是为了解决车机一启动当切换到“电话设置”界面的时候能正确的显示界面布局
+在蓝牙设备界面中正在连接的时候，进行电话本同步出现nullpointer异常，原因是bletoothUtils类中的
+
+2015-9-15
+ v修改逻辑，将蓝牙开关的按钮初始化和界面布局初始化操作放在线程中处理，以求得每次界面切换时候的精确性
+ v查询电话本同步反馈信息中的已经下载个数字符串，以便达到我们显示进度的目的。
+ make; make update-api;make android;make andorid-release;
+ 蓝牙断开连接的时候，A2DP协议未能正常的断开，导致界面显示不正确
+ “蓝牙设备”界面中的状态提示信息，需要简化处理（隐藏各个协议的显示）
+ 蓝牙开关快速打开之后，进入“蓝牙设备”界面无绑定list项目
+ v调用蓝牙的disable（）函数的时候，如果A2DP协议正处在CONNECTING状态的时候，会出现ANR异常
+ V解决电话本同步问题中的lv数据显示问题
+ 在蓝牙还没有完全连接上的时候进行电话本的同步操作，需要处理完善
+ v电话本同步过程中的数量提示信息显示
+ 自动重连机制的建立（包括子协议 尤其是PBAP）
+ “电话设置”界面切换的时候，存在闪烁的现象
+ 我能够同时同步电话簿和通讯记录吗？并行同步
+TUID 相关事宜（TelephonyManager）getSystemService(TELEPHONY_SERVICE).getDeviceId();
+
+2015-9-16
+ 1x,拨号界面切换到其他界面的时候 同步数字不能正确显示的问题
+ 2,拨打电话之后在通话记录中找不到的问题
+ 3,setPin()的使用
+ 4,蓝牙子协议没有全部断开连接的时候,不允许进行重新连接
+
+
+2015-9-23
+WIFI 性能调整,替换dat文件的方法,ufmib.dat (此文件是CSR提供的,他们对这个文件进行调整,以调节wifi的信号性能)
+替换到车机上的路径是/etc/firmware/unifi-sdio-2/ufmib.dat (需要注意的是这个文件的属性为x)
+源码路径：android/external/synergy/modules/config/firmware/M2501
+
+2015-9-25
+bsp/android/external/synergy/modules/bt/applications/bootstrap/psr/pb-109r13_8241_csr8311_uart.psr 蓝牙功率调整文件
+编译过程中出现如下错误
+  CALL    /home/mengxianbin/sources/working/android/bsp/kernel/scripts/checksyscalls.sh
+make[1]: 正在进入目录 `/home/mengxianbin/sources/working/android/bsp/kernel'
+make[1]: warning: -jN forced in submake: disabling jobserver mode.
+  GEN     scripts/mod/devicetable-offsets.h
+  HOSTCC  scripts/mod/file2alias.o
+  GEN     /home/mengxianbin/sources/working/android/bsp/out/prima2cb/obj/kernel/Makefile
+  CHK     include/generated/uapi/linux/version.h
+  CHK     include/generated/utsrelease.h
+  Using /home/mengxianbin/sources/working/android/bsp/kernel as source for kernel
+  CC      scripts/mod/devicetable-offsets.s
+  GEN     scripts/mod/devicetable-offsets.h
+  HOSTCC  scripts/mod/file2alias.o
+packaging...
+  HOSTLD  scripts/mod/modpost
+fixdep: error opening depfile: scripts/mod/.file2alias.o.d: No such file or directory
+make[4]: *** [scripts/mod/file2alias.o] 错误 2
+make[3]: *** [scripts/mod] 错误 2
+make[2]: *** [scripts] 错误 2
+make[1]: *** [sub-make] 错误 2
+make[1]:正在离开目录 `/home/mengxianbin/sources/working/android/bsp/kernel'
+make: *** [android-recovery] 错误 2
+
+2015-9-28
+CSR SiRFSoC ATLAS6 ARM Cortex A9 Platform (ARCH_ATLAS6) [Y/n/?] y
+CSR SiRFSoC PRIMA2 ARM Cortex A9 Platform (ARCH_PRIMA2) [Y/n/?] y
+CSR SiRFSoC MARCO ARM Cortex A9 Platform (ARCH_MARCO) [Y/n/?] y
+Internal SRAM as option text section (SIRFSOC_SRAM) [Y/n/?] (NEW) 
+
+使用com和usb线烧写android系统（无MCU升级）（特别注意已经打开的串口需要关闭，保证只有一个串口正在工作）
+sudo ./launcher --image=u-boot-no-autoboot.bin --dev=/dev/ttyUSB0 --ubootcmd=ums
+sudo ./flash.sh sdc ostype=android all 
+只升级kernel
+sudo ./flash.sh sdc ostype=android uimage
+
+老版本
+sudo ./launcher --dev=/dev/ttyUSB0 --ubootcmd=ums
+sudo ./flash.sh sdb all
+
+制作升级SD卡
+ sudo ./flash_recovery.sh sdc all
+
+制作release版本的android
+make android-release
+
+
+在release版本中如果在boot/uboot/include/configs/prima2cb.h文件中添加"setenv bootargs no_console_suspend retain_initrd quiet" \ quiet选项之后串口log信息丢失，如果在debug下面那么log信息不受影响。
+
+BT CSR的例子程序的例子程序存放路径是 /android/device/common/apps/BTAPP
+
+2015-10-26
+在验证mic的gain的时候，我们读取了设置寄存中的值，方法是（scripts-md.sh文件是CSR提供给我们用来获取寄存器中的值的）：
+scripts-md.sh 0xb00400E8 
+在android系统中输入 tinymix 命令 测试混音通道
+
+CSR 李工分机021-28981624 01624
+
+电话通信质量差的问题涉及到修改的文件。
+bsp/android/device/csr/hardware/libaudio/AudioHardware.cpp
+bsp/android/kernel/sound/soc/sirf/sirf-soc-inner.c
+修改mic gain 的值，需要对照mic gain的数值对照表，然后查表获取数值，修改bsp/android/kernel/sound/soc/sirf/sirf-soc-inner.c文件的
+657行之下，代码如下（需要重新编译kernel，重烧kernel）
++        /* test code for gain setting 0x13->24dB, 0x19->30dB, 0x1F->36dB */
++       val = readl(sinner_audio->base + AUDIO_IC_CODEC_CTRL1);
++       printk("readl(sinner_audio->base + AUDIO_IC_CODEC_CTRL1) val_before = 0x%08x\n" , val);
++       val &= ~((0x1f << 10) | (0x1f << 15));
++       val |= (0x0F & 0x1F) << 10;
++       val |= (0x0F & 0x1F) << 15;
++       printk("Have been changeed val is = 0x%08x\n" , val);
++       writel(val, sinner_audio->base + AUDIO_IC_CODEC_CTRL1);
++       printk("writel(val, sinner_audio->base + AUDIO_IC_CODEC_CTRL1) val_after = 0x%08x\n" , val);
+
+
+2015-10-27
+monkey测试程序在源码中的位置：
+android/development/cmds/monkey/src/com/android/commands/monkey/Monkey.java
+
+2015-10-28
+我们曾将修改过有关setPin的函数，牵扯到的文件是RemoteDevice.java的367行
+
+2015-10-29
+ RuntimeException e = new RuntimeException(" %%%% is here");
+ e.fillInStackTrace();
+ Slog.i("AppErrorDialog", "xxxxxxxxxxxxxxxxx" , e);
+  ubuntu下面的图像编辑软件pinta
+2015-11-4
+关于NDK开发环境以及流程方面的探索
+
+2015-11-9
+github的地址：
+https://github.com/fyzh88/onlytest.git
+
+
+
+
+
+
+
+
+
+
+E/AndroidRuntime( 3596): java.lang.RuntimeException: Can't create handler inside thread that has not called Looper.prepare()
+E/AndroidRuntime( 3596): 	at android.os.Handler.<init>(Handler.java:197)
+E/AndroidRuntime( 3596): 	at android.os.Handler.<init>(Handler.java:111)
+E/AndroidRuntime( 3596): 	at com.android.phone.bluetooth.ContactService.enableContentObserver(ContactService.java:80)
+E/AndroidRuntime( 3596): 	at com.android.phone.bluetooth.DialFregment$SyncPhoneBookThread.run(DialFregment.java:570)
+E/AndroidRuntime( 3596): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+E/AndroidRuntime( 3596): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+E/AndroidRuntime( 3596): 	at java.lang.Thread.run(Thread.java:856)
+
+
+E/AndroidRuntime( 4756): Caused by: java.lang.NullPointerException
+E/AndroidRuntime( 4756): 	at com.android.phone.bluetooth.DialFregment.<init>(DialFregment.java:539)
+E/AndroidRuntime( 4756): 	at com.android.phone.DialMainActivity.<init>(DialMainActivity.java:40)
+E/AndroidRuntime( 4756): 	at java.lang.Class.newInstanceImpl(Native Method)
+E/AndroidRuntime( 4756): 	at java.lang.Class.newInstance(Class.java:1319)
+E/AndroidRuntime( 4756): 	at android.app.Instrumentation.newActivity(Instrumentation.java:1054)
+E/AndroidRuntime( 4756): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2097)
+
+
+
+ java.lang.IllegalStateException: The specified message queue synchronization  barrier token has not been posted or has already been removed.
+ 2 down vote accepted
+Problem is that you queue messages, that are allocated by message.obtain(). You need to create copy of message by calling new Message(), copyFrom(message) and then add copied message in queue.
+
+

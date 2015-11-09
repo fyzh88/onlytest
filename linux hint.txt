@@ -1,0 +1,14 @@
+串口调试的时候由于没有 adb remount 的便利命令，所以只能将/system分区自己重新挂载为可读写分区，方法是：
+ mount /system -o rw,remount
+ 查看文件的16进制形式的方法：hd your_binary_file | more
+UML工具umbrello
+文件对比工具meld
+vi统计某个匹配出现的次数 :%s/hello world/&/gn    上句统计hello world 在全文出现的次数。
+     如果要统计从50行到100行，出现的次数，则使用 :50,100s/hello world//gn
+
+添加ubuntu用户：sudo useradd xxxxx，sudo passwd xxxx
+删除ubuntu用户: sudo userdel -r xxxxx 
+变更某个目前的所有者：chown user：greoup /directory，例如 chown fyzh:fyzh /data/synergy
+切换用户操作：su xxxx 例如 su fyzh_git
+查看系统所有用户信息：cat /etc/passwd
+修改用户的密码：sudo passwd xxxx ,例如 sudo passwd fyzh_git
