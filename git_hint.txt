@@ -32,6 +32,9 @@ git reflog 显示命令日志记录。
 
 git reset HEAD git_hint.txt 将会撤销git add 添加的git_hint.txt文件,而且本地文件git_hint.txt不受影响.
 
+git remote -v show origin 获取远程origin的一些信息
+git remote -v show xxxxx
+
 
 
 
