@@ -35,6 +35,8 @@ git reset HEAD git_hint.txt 将会撤销git add 添加的git_hint.txt文件,而�
 git remote -v show origin 获取远程origin的一些信息
 git remote -v show xxxxx
 
+git push 远程主机 本地分支 远程分支
+git pull 远程主机 远程分支 本地分支
 
 
 
