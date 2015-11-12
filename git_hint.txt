@@ -19,4 +19,20 @@ git tag
 git tag -l
  
 tag就是打一个标记而已，方便取出或回退到这个标记点。
-也许你会问，直接git checkout <commit-sha1>不就可以了？当然可以，前提是你确实能记得住也愿意去记那条冗长的sha1码。sha1码好记还是tag name好记呢？ k
+也许你会问，直接git checkout <commit-sha1>不就可以了？当然可以，前提是你确实能记得住也愿意去记那条冗长的sha1码。sha1码好记还是tag name好记呢？ 
+
+2015-11-11
+git branch -r :show the remote server branchs
+2015-11-12
+git log --author=fyzh@126.com --stat -5 -p
+attention the -p paramter ,it will show the diff content in the log content shows.
+-p标签会在log的显示内容中显示diff内容，这样方便了很多.
+
+git reflog 显示命令日志记录。
+
+git reset HEAD git_hint.txt 将会撤销git add 添加的git_hint.txt文件,而且本地文件git_hint.txt不受影响.
+
+
+
+
+
