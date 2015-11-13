@@ -17,8 +17,10 @@ vi统计某个匹配出现的次数 :%s/hello world/&/gn    上句统计hello wo
 tail -f xxxx.txt
 
 
-
-
+2015-11-13
+replace string in the vi editor,in the commond mode and then input the following command.
+:,.$s/AAAA/BBBB/g
+上面这句话的意思是将AAAA替换为BBBB，并且是对整个文件范围内起作用
 
 
 
