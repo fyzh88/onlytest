@@ -12,3 +12,13 @@ vi统计某个匹配出现的次数 :%s/hello world/&/gn    上句统计hello wo
 切换用户操作：su xxxx 例如 su fyzh_git
 查看系统所有用户信息：cat /etc/passwd
 修改用户的密码：sudo passwd xxxx ,例如 sudo passwd fyzh_git
+
+显示文件的最后部分，动态的显示，也就是每隔一段时间就刷新一次文件的最后部分
+tail -f xxxx.txt
+
+
+
+
+
+
+
