@@ -42,7 +42,6 @@ m 中可以使用 ：s 命令来替换字符串。
 
 
 
-=============================================================================================================
 2015-11-16
 submount 命令已经不再使用了，替换的命令是mount.cifs[common internet file system],如果你的系统中没有这个命令那么可以使用
 sudo apt-get install cifs-utils命令进行安装.
@@ -53,8 +52,9 @@ mount.cifs //192.168.8.6/TEAMS /media/fyzh/teams -o username=fengyanzhao
 
 
 
-
-
+如何查看ubuntu操作系统的位数？
+getconf LONG_BIT
+uname -a ,i686 就表示32位
 
 
 
