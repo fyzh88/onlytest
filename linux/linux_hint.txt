@@ -51,12 +51,13 @@ sudo apt-get install cifs-utils命令进行安装.
 mount.cifs //192.168.8.6/TEAMS /media/fyzh/teams -o username=fengyanzhao
 
 
-
 如何查看ubuntu操作系统的位数？
 getconf LONG_BIT
 uname -a ,i686 就表示32位
 
-
+2015-11-17
+ubuntu系统中切换多个版本的JDK方法：
+update-alternatvies --config java
 
 
 
