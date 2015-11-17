@@ -1,0 +1,7 @@
+2015-11-17
+在ubuntu下重启，停止，启动mysql的方法：
+sudo service start mysql
+sudo service stop mysql
+sudo service restart mysql
+
+设置mysql的默认编码为utf-8的方法:
