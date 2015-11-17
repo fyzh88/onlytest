@@ -4,4 +4,20 @@ sudo service start mysql
 sudo service stop mysql
 sudo service restart mysql
 
+查看mysql的默认编码格式的方法是：
+show variables like '%character%';
+show variables liek '%collation%';
+
 设置mysql的默认编码为utf-8的方法:
+
+character_set_client为客户端编码方式；
+character_set_connection为建立连接使用的编码；
+character_set_database数据库的编码；
+character_set_results结果集的编码；
+character_set_server数据库服务器的编码;
+
+
+
+
+
+
