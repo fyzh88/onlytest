@@ -59,6 +59,8 @@ uname -a ,i686 就表示32位
 ubuntu系统中切换多个版本的JDK方法：
 update-alternatvies --config java
 
-
+2015-11-19
+指定目录的查找：
+find -name 'xxxxx' -type d
 
 
