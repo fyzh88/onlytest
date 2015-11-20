@@ -16,3 +16,18 @@ grep -E "AAAA|BBBB|CCCC" ,这个表达式的意思是匹配AAAA BBBB CCCC其中�
 2015-11-20
 grep 忽略大小写搜索的方法：
 grep -i
+
+grep 显示匹配行的上下文的方法：
+grep -C 5  显示上下各5行
+grep -B 5 显示上5行
+grep -A 5 显示下5行
+grep -rn createInCallIntent -C 5
+
+grep -v xxxx ,搜索不包含xxxx的行的所有内容
+
+
+
+
+
+
+
