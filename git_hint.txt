@@ -43,7 +43,10 @@ git fetch 远程主机 远程分支 本地分支
 git merge 
 git log -p others..origin/others 查看区别
 
-
-
+2015-11-20
+根据commit信息过滤gitlog，例如
+git log --grep=CSR ,这句话的意思是过滤出commit信息中 包含CSR字符串的所有提交
+根据提交的文件内容信息过滤所有的提交
+git log -Sxxxxxxxx,这句话的意思是过滤出提交文件的内容中包含xxxxxxxx字符串的所有提交
 
 
