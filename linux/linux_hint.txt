@@ -63,4 +63,9 @@ update-alternatvies --config java
 指定目录的查找：
 find -name 'xxxxx' -type d
 
-
+2015-11-22
+uming.ttc 中文字体的安装方法：
+sudo apt-get install fonts-arphic-uming
+pdf文件中的页转换成图片使用到的工具ImageMagick，安装方法是：
+sudo apt-get install imagemagick
+sudo apt-get install pdftk (可以将PDF文件按页面分割为子文件)
