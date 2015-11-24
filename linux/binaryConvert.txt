@@ -1,0 +1,17 @@
+base和obase方法。
+ibase是输入数字的进制，而obase就是输出数字的进制了。
+如果用一条命令来转数字，可以用echo命令和管道结合bc。如下：
+10进制转2进制：
+$ echo "obase=2;ibase=10;100" | bc
+1100100
+10进制转16进制：
+$ echo "obase=16;100" | bc
+64
+
+16进制转10进制：
+$ echo "ibase=16;F1" | bc
+241
+
+16进制转2进制：
+$ echo "ibase=16;obase=2;F1" | bc
+11110001
