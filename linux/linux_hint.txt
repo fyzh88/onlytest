@@ -72,3 +72,13 @@ sudo apt-get install pdftk (可以将PDF文件按页面分割为子文件)
 
 2015-11-23
 Poppler是一个基于xpdf-3.0代码基础的PDF渲染库。 Poppler-utils软件包包括了pdftops (PDF到Postｓｃｒｉｐｔ的转换器), pdfinfo (PDF文档信息提取器), pdfimages (PDF图像提取器), pdftohtml (PDF到HTML的转换器), pdftotext (PDF到text的转换器), 以及pdffonts (PDF字体分析器)。Debian/Ubuntu用户可以通过apt安装poppler: $ sudo aptitude install poppler-utils
+
+2015-11-24
+echo $((2#10000000000000000000001001111))
+在 Shell 中将任意进制的数以十进制输出
+ 
+echo $((2#1101010))
+echo $((8#377))
+echo $((16#D8))
+echo $((12#10))
+echo $((36#ZZYY))
