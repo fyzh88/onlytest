@@ -85,5 +85,9 @@ echo $((36#ZZYY))
 
 2015-11-25
 sudo apt-get install p7zip-full
-ubuntu 下面解压RAR文件的方法
+ubuntu 下面解压zip文件的方法
 7z -x file.rar
+
+ubuntu 下面解压RAR文件的方法
+sudo apt-get install rar
+rar e file.rar outputdir/
