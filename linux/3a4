@@ -1,0 +1,15 @@
+#! /bin/bash
+cd $APP3A4;
+source ./build/envsetup.sh;
+mmm packages/apps/$1 | grep Install:;
+if [ $? -eq 0 ]
+then
+
+adb remount;
+adb push out/target/product/sirfsocv7/system/app/$1.apk /system/app;
+if [ $1 = "Phone" ] 
+then
+adb reboot;
+fi
+
+fi

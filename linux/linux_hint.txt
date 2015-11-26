@@ -91,3 +91,8 @@ ubuntu 下面解压zip文件的方法
 ubuntu 下面解压RAR文件的方法
 sudo apt-get install rar
 rar e file.rar outputdir/
+
+2015-11-26
+ubuntu svn client
+sudo apt-get install rapidsvn {not support chnese}
+sudo apt-get install rabbitvcs-cli {right things}
