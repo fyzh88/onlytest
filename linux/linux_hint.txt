@@ -1,4 +1,4 @@
-串口调试的时候由于没有 adb remount 的便利命令，所以只能将/system分区自己重新挂载为可读写分区，方法是：
+串试的时候由于没有 adb remount 的便利命令，所以只能将/system分区自己重新挂载为可读写分区，方法是：
  mount /system -o rw,remount
  查看文件的16进制形式的方法：hd your_binary_file | more
 UML工具umbrello
@@ -96,3 +96,9 @@ rar e file.rar outputdir/
 ubuntu svn client
 sudo apt-get install rapidsvn {not support chnese}
 sudo apt-get install rabbitvcs-cli {right things}
+
+2015-11-30
+有的时候，我们通过grep过出一些文件列表，然而我们想对这些文件列表进行操作，例如拷贝，该如何简化此过程
+example:
+find -name *.jar | grep target/org. | xargs -I {} cp {} /home/fyzh/1212
+This is an Example of command "cp" used in the pipe
