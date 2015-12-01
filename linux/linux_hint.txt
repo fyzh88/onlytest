@@ -106,3 +106,6 @@ This is an Example of command "cp" used in the pipe
 2015-12-1
 cat txt.ss | od -a -t x1z 
 将会显示txt.ss文件中的字符，以十六进制形式
+
+cat txt.ss | cut -d "," -f 1,2,3
+上面这句话的意思是 剪切出 以逗号分割出来的第1个第2个和第三个
