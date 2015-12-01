@@ -109,3 +109,13 @@ cat txt.ss | od -a -t x1z
 
 cat txt.ss | cut -d "," -f 1,2,3
 上面这句话的意思是 剪切出 以逗号分割出来的第1个第2个和第三个
+
+遍历文件的时候，如果文件名称中存在空格，那么echo 的输出结果是错误的,解决方案就是IFS
+#!/bin/bash
+IFS=$(echo -en "\n\b")
+echo -en $IFS
+for file in `ls .`
+do
+echo $file
+done
+注意ls命令
