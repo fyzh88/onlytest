@@ -119,3 +119,7 @@ do
 echo $file
 done
 注意ls命令
+
+终端中的复制和粘帖快捷键
+ctrl+shit+c
+ctrl+shift+v
