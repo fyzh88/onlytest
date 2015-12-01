@@ -1,0 +1,244 @@
+# Start of Script
+type= user
+count= 49
+speed= 1.0
+start data >>
+DispatchKey(0, 0, 0, 3, 0, 0, 0, 0); // HardKey_HOME
+DispatchKey(0, 0, 1, 3, 0, 0, 0, 0);
+UserWait(2000)
+LaunchActivity(com.chinatsp.multimedia, com.chinatsp.source.MultimediaMainActivity)
+Tap(250, 410, 100) //source
+UserWait(1000)
+Tap(250, 410, 100) //source
+UserWait(1000)
+DispatchKey(0, 0, 0, 133, 0, 0, 0, 0) // HardKey_MEDIA
+DispatchKey(0, 0, 1, 133, 0, 0, 0, 0)
+UserWait(2000)
+DispatchKey(0, 0, 0, 133, 0, 0, 0, 0)
+DispatchKey(0, 0, 1, 133, 0, 0, 0, 0)
+UserWait(2000)
+DispatchKey(0, 0, 0, 133, 0, 0, 0, 0)
+DispatchKey(0, 0, 1, 133, 0, 0, 0, 0)
+UserWait(2000)
+Tap(280, 290, 100) //SD卡
+UserWait(1000)
+Tap(410, 80, 100) //上一级
+Tap(410, 80, 100)
+Tap(410, 80, 100)
+UserWait(1000)
+Tap(535, 145, 100) //列表中第一条Music
+UserWait(1000)
+Tap(535, 145, 100) //列表中第一条
+//DispatchPointer(0, 0, 0, 535, 145, 0, 0, 0, 0, 0, 0, 0)
+//DispatchPointer(0, 0, 1, 535, 145, 0, 0, 0, 0, 0, 0, 0)
+UserWait(5000)
+Tap(180, 100, 100) //暂停/播放
+UserWait(3000)
+Tap(180, 100, 100)
+UserWait(300)
+Tap(180, 100, 100)
+UserWait(300)
+Tap(180, 100, 100)
+UserWait(1000)
+Tap(100, 160, 100) //上一曲
+UserWait(1000)
+Tap(290, 160, 100) //下一曲
+UserWait(1000)
+Tap(100, 160, 100) //上一曲
+UserWait(300)
+Tap(100, 160, 100)
+UserWait(300)
+Tap(100, 160, 100)
+UserWait(300)
+Tap(290, 160, 100) //下一曲
+UserWait(300)
+Tap(290, 160, 100)
+UserWait(300)
+Tap(290, 160, 100)
+UserWait(300)
+Tap(290, 160, 100)
+UserWait(1000)
+Tap(290, 260, 100) // 重复
+UserWait(1000)
+Tap(290, 260, 100)
+UserWait(300)
+Tap(290, 260, 100)
+UserWait(300)
+Tap(290, 260, 100)
+UserWait(300)
+Tap(290, 260, 100)
+UserWait(1000)
+Tap(200, 325, 100) // 随机
+UserWait(1000)
+Tap(200, 325, 100)
+UserWait(300)
+Tap(200, 325, 100)
+UserWait(300)
+Tap(200, 325, 100)
+UserWait(300)
+Tap(200, 325, 100)
+UserWait(1000)
+Tap(110, 260, 100) // 列表
+UserWait(1000)
+Tap(110, 260, 100)
+UserWait(1000)
+Tap(560, 410, 100) //soundEffect
+UserWait(1000)
+Tap(210, 120, 100) //均衡器
+UserWait(1000)
+Tap(700, 120, 100) //EQ下一个
+UserWait(1000)
+Tap(700, 120, 100)
+UserWait(1000)
+Tap(700, 120, 100)
+UserWait(1000)
+Tap(700, 120, 100)
+UserWait(1000)
+Tap(700, 120, 100)
+UserWait(1000)
+Tap(700, 120, 100)
+UserWait(1000)
+Tap(210, 320, 100) // 音场
+UserWait(1000)
+Drag(540, 220, 595, 160, 10); // 中心位置开始拖拽
+UserWait(1000)
+Drag(595, 160, 490, 160, 10);
+UserWait(1000)
+Drag(490, 160, 480, 295, 10);
+UserWait(1000)
+Drag(480, 295,590, 290, 10);
+UserWait(1000)
+Drag(590, 290, 540, 220, 10);
+UserWait(1000)
+
+// 图片
+Tap(250, 410, 100) //source
+UserWait(1000)
+Tap(280, 290, 100) //SD卡
+UserWait(1000)
+Tap(410, 80, 100) //上一级
+Tap(410, 80, 100)
+Tap(410, 80, 100)
+UserWait(1000)
+Tap(470, 180, 100) //pictures
+UserWait(1000)
+Tap(535, 145, 100) //列表中第一条
+UserWait(5000)
+Tap(100, 190, 100) //上一张
+UserWait(1000)
+Tap(300, 190, 100) //下一张
+UserWait(1000)
+Tap(300, 190, 100) //下一张
+UserWait(300)
+Tap(300, 190, 100)
+UserWait(300)
+Tap(300, 190, 100)
+UserWait(300)
+Tap(300, 190, 100)
+UserWait(300)
+Tap(300, 190, 100)
+UserWait(300)
+Tap(100, 190, 100) //上一张
+UserWait(300)
+Tap(100, 190, 100)
+UserWait(300)
+Tap(100, 190, 100)
+UserWait(3000)
+Tap(260, 290, 100) //亮度
+UserWait(1000)
+Tap(490, 355, 100) //调节亮度
+UserWait(500)
+Tap(670, 355, 100) //调节亮度
+UserWait(500)
+Tap(550, 355, 100) //调节亮度
+UserWait(500)
+Tap(520, 355, 100) //调节亮度
+UserWait(500)
+Tap(650, 355, 100) //调节亮度
+UserWait(1000)
+Tap(140, 290, 100) //列表
+UserWait(1000)
+Tap(140, 290, 100) //列表
+UserWait(1000)
+Tap(180, 100, 100) //播放
+UserWait(3000)
+Drag(636, 242, 272, 260, 30); //拖拽上/下一张
+UserWait(1000)
+Drag(636, 242, 272, 260, 30); //拖拽上/下一张
+UserWait(1000)
+Drag(636, 242, 272, 260, 30); //拖拽上/下一张
+UserWait(1000)
+Drag(272, 260, 636, 242, 30); //拖拽上/下一张
+UserWait(1000)
+Drag(272, 260, 636, 242, 30); //拖拽上/下一张
+UserWait(3000)
+Tap(400, 220, 100) //恢复
+UserWait(1000)
+Tap(400, 220, 100)
+UserWait(1000)
+
+// 电影
+Tap(250, 410, 100) //source
+UserWait(1000)
+Tap(80, 290, 100) //SD卡
+UserWait(1000)
+Tap(410, 80, 100) //上一级
+Tap(410, 80, 100)
+Tap(410, 80, 100)
+UserWait(1000)
+Tap(470, 230, 100) //video
+UserWait(1000)
+Tap(535, 145, 100) //列表中第一条
+UserWait(5000)
+Tap(180, 100, 100) //暂停/播放
+UserWait(1000)
+Tap(180, 100, 100)
+UserWait(300)
+Tap(180, 100, 100)
+UserWait(300)
+Tap(180, 100, 100)
+UserWait(300)
+Tap(100, 190, 100) //上一曲
+UserWait(1000)
+Tap(300, 190, 100) //下一曲
+UserWait(1000)
+Tap(100, 190, 100) //上一曲
+UserWait(300)
+Tap(100, 190, 100)
+UserWait(300)
+Tap(100, 190, 100)
+UserWait(300)
+Tap(300, 190, 100) //下一曲
+UserWait(300)
+Tap(300, 190, 100)
+UserWait(300)
+Tap(300, 190, 100)
+UserWait(300)
+Tap(300, 190, 100)
+UserWait(300)
+Tap(300, 190, 100)
+UserWait(3000)
+Tap(260, 290, 100) //亮度
+UserWait(1000)
+Tap(490, 330, 100) //调节亮度
+UserWait(500)
+Tap(650, 330, 100) //调节亮度
+UserWait(500)
+Tap(550, 330, 100) //调节亮度
+UserWait(500)
+Tap(510, 330, 100) //调节亮度
+UserWait(500)
+Tap(670, 330, 100) //调节亮度
+UserWait(1000)
+Tap(140, 290, 100) //列表
+UserWait(1000)
+Tap(140, 290, 100) //列表
+UserWait(1000)
+Tap(570, 180, 100) //全屏
+UserWait(10000)
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+按照获取XY坐标应用：
+	PC: 
+	  adb remount
+	  adb push TestAPP.apk /system/app/
+
+启动获取XY坐标应用：
+	adb shell am start -a chinatsp.TRANSPARENT
+
+使用monkey执行脚本：monkey [-v] -f <monkey脚本> <执行次数>
+	-v ：命令行打印输出的详细级别。不指定则默认级别0输出，指定一个-v表示级别1，指定两个-v表示级别2。
+	
+	eg. adb shell monkey -v -v -f /storage/sdcard0/monkey_hardkey.script 1
+
+
+
+模拟用户行为
+1）向一个指定位置发送单个手势消息
+DispatchPointer(downTime, eventTime, action, x, y, pressure, size, metaState, xPrecision, yPrecision, device, edgeFlags)
+	action : 0表示DOWN， 1表示UP。按下抬起操作必须成对出现。
+	eg. 
+	  DispatchPointer(0, 0, 0, 535, 145, 0, 0, 0, 0, 0, 0, 0) //按下
+	  DispatchPointer(0, 0, 1, 535, 145, 0, 0, 0, 0, 0, 0, 0) //抬起
+
+
+2）模拟一次手指单击事件（DOWN&UP）
+Tap(x, y, tapDuration) 
+	tapDuration: DOWN&UP间隔时间(milliseconds). 可设置该参数来模拟短按或是长按事件(>=2000长按)
+	eg. 
+	  Tap(535, 145, 100)
+	等同于
+	  DispatchPointer(0, 0, 0, 535, 145, 0, 0, 0, 0, 0, 0, 0)
+	  UserWait(100)
+	  DispatchPointer(0, 0, 1, 535, 145, 0, 0, 0, 0, 0, 0, 0)
+
+
+3）让脚本中断一段时间
+UserWait(sleepTime)
+	sleepTime：milliseconds.
+	eg. UserWait(1000)
+
+
+4）发送按键消息
+DispatchKey(downTime, eventTime, action, code, repeat, metaState, device, scancode)
+	action：0表示DOWN， 1表示UP
+	code：键值。3A4： HOME=3，MEDIA=133，NAVI=132，FM/AM-134，一键通-131，SOS-135，VOL+=24，VOL-=25，MUTE=140，方向盘MODE=139，方向盘上一曲=137，方向盘下一曲=138
+	eg.
+	  DispatchKey(0, 0, 0, 24, 0, 0, 0, 0);  // 按下
+	  DispatchKey(0, 0, 1, 24, 0, 0, 0, 0); // 抬起  需成对出现
+
+
+5）模拟拖动事件
+Drag(xStart, yStart, xEnd, yEnd, stepCount)
+	eg.
+	  Drag(636, 242, 272, 260, 18);
+
+6）模拟敲击键盘事件
+DispatchPress(keyName)
+	keyName：要敲击的按键，具体值请参见KeyEvent.
+	eg. 输入515508
+	  DispatchPress(KEYCODE_5)
+	  UserWait(200)
+	  DispatchPress(KEYCODE_1)
+	  UserWait(200)
+	  DispatchPress(KEYCODE_5)
+	  UserWait(200)
+	  DispatchPress(KEYCODE_5)
+	  UserWait(200)
+	  DispatchPress(KEYCODE_0)
+	  UserWait(200)
+	  DispatchPress(KEYCODE_8)
+
+
+
