@@ -102,3 +102,7 @@ sudo apt-get install rabbitvcs-cli {right things}
 example:
 find -name *.jar | grep target/org. | xargs -I {} cp {} /home/fyzh/1212
 This is an Example of command "cp" used in the pipe
+
+2015-12-1
+cat txt.ss | od -a -t x1z 
+将会显示txt.ss文件中的字符，以十六进制形式
