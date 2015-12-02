@@ -123,3 +123,9 @@ done
 终端中的复制和粘帖快捷键
 ctrl+shit+c
 ctrl+shift+v
+
+2015-12-02
+ubutu terminal command history shortcut is CTRL+r
+sudo apt-get install txt2html 
+convert Text file to html format
+
