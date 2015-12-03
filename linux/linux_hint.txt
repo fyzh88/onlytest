@@ -128,4 +128,12 @@ ctrl+shift+v
 ubutu terminal command history shortcut is CTRL+r
 sudo apt-get install txt2html 
 convert Text file to html format
+2015-12-03
+fyzh@fyzh-TongFang-G41T-CM3:~/sources/3A4/android/bsp/android$ find -iregex ".*/audioflinger\..*"
+./frameworks/av/services/audioflinger/AudioFlinger.h
+./frameworks/av/services/audioflinger/AudioFlinger.cpp
+./out/target/product/sirfsocv7/obj/SHARED_LIBRARIES/libaudioflinger_intermediates/AudioFlinger.o
+./out/target/product/sirfsocv7/obj/SHARED_LIBRARIES/libaudioflinger_intermediates/AudioFlinger.P
 
+上面的指令展示了在find命令中使用正则表达式的方法，其中-i忽略大小写，需要注意的前面的.*是必须的.
+还有需要注意的是引号一定要有
