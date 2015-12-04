@@ -137,3 +137,7 @@ fyzh@fyzh-TongFang-G41T-CM3:~/sources/3A4/android/bsp/android$ find -iregex ".*/
 
 上面的指令展示了在find命令中使用正则表达式的方法，其中-i忽略大小写，需要注意的前面的.*是必须的.
 还有需要注意的是引号一定要有
+
+2015-12-4
+chmod -R a+rwx xxxx/
+修改xxxx/目录下面的所有文件的文件属性

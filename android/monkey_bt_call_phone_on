@@ -1,0 +1,9 @@
+# start of Script
+type= user
+count= 49
+speed= 1.0
+start data >>
+Tap(691,284,100)
+UserWait(10000)
+Tap(576,319,100)
+UserWait(2000)
