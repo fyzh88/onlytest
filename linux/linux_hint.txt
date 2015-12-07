@@ -142,3 +142,8 @@ fyzh@fyzh-TongFang-G41T-CM3:~/sources/3A4/android/bsp/android$ find -iregex ".*/
 chmod -R a+rwx xxxx/
 修改xxxx/目录下面的所有文件的文件属性
 sudo mount -t ntfs /dev/sda2 /media/fyzh/win_source/ -o iocharset=utf8,umask=002
+
+2015-12-5
+ssh username@168.168.168.168
+scp localFile userName@168.168.168.168:/home/user/directory
+
