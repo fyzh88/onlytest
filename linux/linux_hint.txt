@@ -145,3 +145,9 @@ sudo mount -t ntfs /dev/sda2 /media/fyzh/win_source/ -o iocharset=utf8,umask=002
 
 2015-12-7
 ubuntu 循环登录问题,ctrl+alt+f1进入命令行界面 ,查看/home/user/.xsession-errors文件中的内容，里面记录了原因
+
+2015-12-8
+关于vim高亮 需要安装vim才能在vimrc文件中制定 syntax on 打开语法高亮
+sudo apt-get install vim
+
+vi 向上搜索的方法是?pattern 继续搜索的办法是#
