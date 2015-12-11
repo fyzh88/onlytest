@@ -155,3 +155,8 @@ ubuntu 循环登录问题,ctrl+alt+f1进入命令行界面 ,查看/home/user/.xs
 sudo apt-get install vim
 
 vi 向上搜索的方法是?pattern 继续搜索的办法是#
+2015-12-11
+列出dumpsys指令所支持的所有命令的方法
+dumpsys | grep -i "dump of service"
+查询子命令的方法是
+dumpsys activity -h
