@@ -160,3 +160,14 @@ vi 向上搜索的方法是?pattern 继续搜索的办法是#
 dumpsys | grep -i "dump of service"
 查询子命令的方法是
 dumpsys activity -h
+
+2015-12-15
+sudo apt-get install ctags
+sudo apt-get install cscope
+Taglist的实现依赖于ctags
+ http://www.vim-taglist.sourceforge.net/screenshots.html 下载地址Taglist
+
+vi 复制一个单词 
+yaw
+
+

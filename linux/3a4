@@ -1,13 +1,32 @@
 #! /bin/bash
 cd $APP3A4;
 source ./build/envsetup.sh;
-mmm packages/apps/$1 | grep Install:;
-if [ $? -eq 0 ]
+
+#if no paramters then Phone as the DEFAULT !
+appName=${1:-Phone}
+
+for para in $@ 
+do
+
+case $para in 
+-f)
+echo FORCE RECOMPILE $appName
+touch $APP3A4/packages/apps/$appName/AndroidManifest.xml;
+;;
+*)
+esac
+
+done
+
+mmm packages/apps/$appName | grep Install:;
+if [ $? -eq 0 ] 
 then
 
 adb remount;
-adb push out/target/product/sirfsocv7/system/app/$1.apk /system/app;
-if [ $1 = "Phone" ] 
+adb push out/target/product/sirfsocv7/system/app/$appName.apk /system/app;
+adb shell sync;
+sleep 2;
+if [ $appName = "Phone" ] 
 then
 adb reboot;
 fi
