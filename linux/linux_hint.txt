@@ -170,4 +170,6 @@ Taglist的实现依赖于ctags
 vi 复制一个单词 
 yaw
 
+install flash plugin 
+sudo apt-get install flashplugin-nonfree
 
