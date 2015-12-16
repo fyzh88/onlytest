@@ -173,3 +173,6 @@ yaw
 2015-12-16
 dig DNS lookup utils
 
+install flash plugin 
+sudo apt-get install flashplugin-nonfree
+
