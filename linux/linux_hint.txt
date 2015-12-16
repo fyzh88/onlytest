@@ -176,3 +176,18 @@ dig DNS lookup utils
 install flash plugin 
 sudo apt-get install flashplugin-nonfree
 
+Check the socket port with :
+netstat -ant
+netstat -anp
+
+Change the owner of file or directory:
+chown root xxxx
+
+nginx should be run with root priviledge,ATTENTION!
+Because port under 1024 wuold be used with root priviledge.
+So,sudo /usr/sbin/nginx
+
+Check the help file of nginx with command:
+man nginx
+
+
