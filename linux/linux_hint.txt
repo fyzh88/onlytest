@@ -170,4 +170,6 @@ Taglist的实现依赖于ctags
 vi 复制一个单词 
 yaw
 
+2015-12-16
+dig DNS lookup utils
 
