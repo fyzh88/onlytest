@@ -190,4 +190,22 @@ So,sudo /usr/sbin/nginx
 Check the help file of nginx with command:
 man nginx
 
+2015-12-18
+Check the file size :
+du -b xxx.xx    
+du -k xxx.xx
+du -m xxx.xx
+Display with Byte ,Kilobyte ,Megabyte.
+
+Check the detail information of some Image :
+identify[ImageMagick]
+identify xxxxx.xxx
+identify -verbose xxxx.xxx
+
+Compress image file:
+convert -resize 50%x50% origin.png processed.png
+convert -resize 300x400 origin.png processed.png
+
+Determine the file type:
+file xxxx.xxx
 
