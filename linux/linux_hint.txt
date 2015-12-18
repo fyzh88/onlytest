@@ -213,3 +213,5 @@ Attention about the bc Command  in the linux:
 echo "ibase=8;obase=2;2E"|bc
 2E MUST BE in the UPPERCASE!!!!
 
+convert -depth 8 xxxxx.xx xxxxx.xxx
+compress image by qaulity
