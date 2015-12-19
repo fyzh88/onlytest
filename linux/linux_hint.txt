@@ -215,3 +215,12 @@ echo "ibase=8;obase=2;2E"|bc
 
 convert -depth 8 xxxxx.xx xxxxx.xxx
 compress image by qaulity
+
+2015-12-19
+find -ctime 1            equal one day changeTime of file
+find -ctime +1           greater than one day changetime of file
+find -ctime -1
+find -cmin 1
+find -cmin +1
+find -cmin -1
+
