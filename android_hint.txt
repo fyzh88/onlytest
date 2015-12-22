@@ -18,3 +18,12 @@ adb bugreport这个命令值得我们深入的研究，里面牵扯到了很多�
 adb shell
 am broadcast -a
 
+2015-12-22
+debuggerd 命令可以查看android程序的调用堆栈
+service list 查看android系统中正在运行的服务进程，注意都是binder的服务进程
+service -h 是帮助命令
+service call audio 12 i32 1 调用IAudioSErvice接口中的第12个函数 setMasterMute并设置参数为int 1
+dumpsys | grep -i "dump of" 可以查看dumpsys都支持哪些命令
+dumpsys audio
+dumpsys media.audio_flinger
+
