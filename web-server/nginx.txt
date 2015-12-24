@@ -1,0 +1,8 @@
+Nginx start
+/usr/sbin/nginx -c /etc/nginx/nginx.conf
+Nginx stop
+kill -QUIT 33232
+kill -TERM 33232
+kill -INT 33232
+pkill -9 33232
+
