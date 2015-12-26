@@ -17,7 +17,19 @@ character_set_results结果集的编码；
 character_set_server数据库服务器的编码;
 
 
+2015-12-26
+<<ibatis in action>>
+里面提到了使用like进行模糊查询的时候，会有注入漏洞
+这个注入漏洞一个更可怕的后果，删表
+但是在使用ibatis的时候难道就不能like查询了？或者要在web层或者service层对用户的输入条件作一次过滤么？太麻烦了。还好ibatis提供的另一种占位符#在用PreparedStatement执行查询的时候，是用？作占位符，然后set paramter的。。把map里的sql语句改成这样吧：（参考了网上的sql语句）
+Sql代码  
+mysql: select * from tbl_school where school_name like concat('%',#name#,'%')  
+oracle: select * from tbl_school where school_name like '%'||#name#||'%'  
+SQL Server:select * from tbl_school where school_name like '%'+#name#+'%' 
 
 
-
-
+Mybatis中模糊查询的各种写法
+1. sql中字符串拼接
+   SELECT * FROM tableName WHERE name LIKE CONCAT(CONCAT('%', #{text}), '%');
+2. 使用 ${...} 代替 #{...}
+   SELECT * FROM tableName WHERE name LIKE '%${text}%';
