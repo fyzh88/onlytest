@@ -1,0 +1,107 @@
+可以编辑conf/server.xml文件和配置Tomcat以辨认、启动和管理Web应用程序。
+
+ 
+
+   再次，这是笔者建议您为每个新增加的Web应用程序配置Tomcat的方法。
+
+ 
+
+   要使用这一部署方法部署WAR文件，必须在server.xml中为Web应用程序增加Context元素，且必须把Web应用程序的Context元素嵌套在Host容器元素中。
+
+ 
+
+   编辑server.xml文件，并查找Host元素，默认情况如下所示：
+
+ 
+
+   <Host name="localhost " appBase="webapps"
+
+      unpackWARs="true " autoDeploy="true "
+
+      xmlValidation="false " xmlNamespaceAware="false ">
+      .....
+   </Host>
+
+ 
+
+   可以设置unpackWARs的值为true或false，这要根据从打包的WAR文件还是在第一次解包后从解包的目录提供文件而定。
+
+ 
+
+   笔者建议您设置该值为true，并允许Tomcat解包WAR文件且从解包目录下提供文件，因为这样处理可以使您很容易就能检测到Tomcat提供什么样的Web应用程序文件和内容。查看本站早期“Host”一节。以了解笔者为何这样建议的详细理由。
+
+ 
+
+   通常，因为默认情况下主机名是localhost，而且通过Tomcat的网络服务器传递给机器的请求都将默认主机作为(默认)路由，所以在默认Host中增加Context能工作。
+
+ 
+
+   在Host中增加Context的情况如下所示：
+
+ 
+
+   <Host name="localhost " appBase="webapps"
+      unpackWARs="true " autoDeploy="false "
+      xmlValidation="false " xmlNamespaceAware="false ">
+      <Context docBase="my-webapp.war " path="/my-webapp "/>
+   </Host>
+
+
+   注意：将Host元素上的autoDeploy设置为“false”非常重要，从而可以避免两次部署Web应用程序。
+
+ 
+
+   如果将autoDeploy设置为true，就会发生再次部署的现象，第一次因server.xml中的Context配置而被部署(因为deployOnstartup="true ")，而第二次因autoDeploy被设置为true而发生自动部署(默认情况下，在没有显式Context的这些属性时，它们每个的默认值都是true)。
+
+ 
+
+   显式设置autoDeploy为False。避免了在server.xml中增加Context配置时两次部署相同的Web应用程序。
+
+ 
+
+   保存server.xml并重启Tomcat。
+
+ 
+
+   当Tomcat启动的时候，它将查找路径CATALINA_HOME/webapps/my-webapp.war中Web应用程序的WAR文件。
+
+ 
+
+   如果Tomcat在该路径下找到了您的Web应用程序，Tomcat将尝试部署您的Web应用程序，而且将它安装到URI路径为/my-webapp的Web服务器上。
+
+ 
+
+   如果在启动和停止Web应用程序时，Tomcat没有遇到任何错误(查看日期)，您就可以通过浏览http://localhost:8080/my-webapp进行访问。
+
+
+   相反，如果您想让这个特殊的Web应用程序映射为服务器的根URI(“/”)，如通过http://localhost:8080访问您的Web应用程序，您需要执行下列特殊步骤：
+
+ 
+
+   一、停止Tomcat。
+
+ 
+
+   二、确定不存在CATALINA_HOME/conf/[EngineName]/[Hostname]/ROOT.xml配置文件如果存在，只要删除就可以了。
+
+ 
+
+   三、编辑server.xml文件，并使<Host>和<context>其看起来如下所示：
+
+ 
+
+   <Host name="localhost " appBase="webapps"
+      unpackWARs="true " autoDeploy="false "
+      xmlValidation="false " xmlNamespaceAware="false ">
+      <Context docBase="my-webapp.war " path=""/>
+   </Host>
+
+
+   注意在Context元素上path=""，这让Tomcat把您的Web应用程序映射为root URI路径。
+
+
+   在这种情况下，没有其他程序被映射为root URI路径，而且您的Web应用程序已经被显示映射为root URI路径。
+
+ 
+
+   请再次确定autoDeploy被设置为false，否则，您的Web应用程序将被部署两次(一次在root URI上被server.xml文件显式配置的路径所部署，另一次在/my-webapp URI路径下被自动部署)。
