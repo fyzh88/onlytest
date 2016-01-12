@@ -224,3 +224,7 @@ find -cmin 1
 find -cmin +1
 find -cmin -1
 
+2016-1-7
+rename -v 's/罗程智/冯艳昭/' *.xlsx
+重命名文件名称，实施文件名称替换，将罗程智替换成冯艳昭.
+
