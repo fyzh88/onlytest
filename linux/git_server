@@ -1,0 +1,81 @@
+1,添加git用户
+fyzh@fyzh-TongFang-G41T-CM3:~$ adduser git
+adduser：只有 root 才能将用户或组添加到系统。
+fyzh@fyzh-TongFang-G41T-CM3:~$ sudo adduser git
+[sudo] password for fyzh: 
+正在添加用户"git"...
+正在添加新组"git" (1001)...
+正在添加新用户"git" (1001) 到组"git"...
+创建主目录"/home/git"...
+正在从"/etc/skel"复制文件...
+输入新的 UNIX 密码： 
+重新输入新的 UNIX 密码： 
+passwd：已成功更新密码
+正在改变 git 的用户信息
+请输入新值，或直接敲回车键以使用默认值
+	全名 []: fyzh_git
+	房间号码 []: 
+	工作电话 []: 
+	家庭电话 []: 
+	其它 []: 
+这些信息是否正确？ [Y/n] y
+fyzh@fyzh-TongFang-G41T-CM3:~$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+libuuid:x:100:101::/var/lib/libuuid:
+syslog:x:101:104::/home/syslog:/bin/false
+messagebus:x:102:106::/var/run/dbus:/bin/false
+usbmux:x:103:46:usbmux daemon,,,:/home/usbmux:/bin/false
+dnsmasq:x:104:65534:dnsmasq,,,:/var/lib/misc:/bin/false
+avahi-autoipd:x:105:113:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/bin/false
+kernoops:x:106:65534:Kernel Oops Tracking Daemon,,,:/:/bin/false
+rtkit:x:107:114:RealtimeKit,,,:/proc:/bin/false
+saned:x:108:115::/home/saned:/bin/false
+whoopsie:x:109:116::/nonexistent:/bin/false
+speech-dispatcher:x:110:29:Speech Dispatcher,,,:/var/run/speech-dispatcher:/bin/sh
+avahi:x:111:117:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/bin/false
+lightdm:x:112:118:Light Display Manager:/var/lib/lightdm:/bin/false
+colord:x:113:121:colord colour management daemon,,,:/var/lib/colord:/bin/false
+hplip:x:114:7:HPLIP system user,,,:/var/run/hplip:/bin/false
+pulse:x:115:122:PulseAudio daemon,,,:/var/run/pulse:/bin/false
+fyzh:x:1000:1000:fyzh,,,:/home/fyzh:/bin/bash
+guest-QNmD07:x:116:125:Guest,,,:/tmp/guest-QNmD07:/bin/bash
+guest-AYhM0d:x:117:126:Guest,,,:/tmp/guest-AYhM0d:/bin/bash
+sshd:x:118:65534::/var/run/sshd:/usr/sbin/nologin
+gitolite:x:119:128::/home/gitolite:/bin/sh
+mysql:x:120:129:MySQL Server,,,:/nonexistent:/bin/false
+guest-iPpLts:x:121:130:Guest,,,:/tmp/guest-iPpLts:/bin/bash
+git:x:1001:1001:fyzh_git,,,:/home/git:/bin/bash
+
+2,初始化空的git
+fyzh@fyzh-TongFang-G41T-CM3:/home/data$ sudo git init --bare project.git
+初始化空的 Git 版本库于 /home/data/project.git/
+3,修改git空仓库的所属者
+fyzh@fyzh-TongFang-G41T-CM3:/home/data$ sudo chown -R git.git project.git/
+4,git用户可以正常通过ssh使用git，但无法登录shell，因为我们为git用户指定的git-shell每次一登录就自动退出
+git:x:1001:1001:fyzh_git,,,:/home/git:/usr/bin/git-shell
+5,克隆git仓库
+
+
+
+
+
+
+
+
